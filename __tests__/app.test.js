@@ -68,5 +68,22 @@ describe('app routes', () => {
 
       expect(data.body).toEqual(expectation);
     });
+
+    test('returns kpop/:id ', async() => {
+
+      const expectation = [
+        {
+          'name': 'BTS',
+          'members': 7,
+          'debut_year': 2013,
+        }
+      ];
+      const data = await fakeRequest(app)
+        .get('/kpop/1')
+        .expect('Content-Type', /json/)
+        .expect(200);
+    
+      expect(data.body).toEqual(expectation);
+    });
   });
 });
