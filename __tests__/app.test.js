@@ -31,31 +31,38 @@ describe('app routes', () => {
       return client.end(done);
     });
 
-    test('returns animals', async() => {
+    test('returns kpop', async() => {
 
       const expectation = [
         {
-          'id': 1,
-          'name': 'bessie',
-          'coolfactor': 3,
-          'owner_id': 1
+          'name': 'BTS',
+          'members': 7,
+          'debut_year': 2013,
         },
         {
-          'id': 2,
-          'name': 'jumpy',
-          'coolfactor': 4,
-          'owner_id': 1
+          'name': 'Mamamoo',
+          'members': 4,
+          'debut_year': 2014,
         },
         {
-          'id': 3,
-          'name': 'spot',
-          'coolfactor': 10,
-          'owner_id': 1
+          'name': 'BlackPink',
+          'members': 4,
+          'debut_year': 2016,
+        },
+        {
+          'name': '(G)I-dle',
+          'members': 6,
+          'debut_year': 2018,
+        },
+        {
+          'name': 'SHINEE',
+          'members': 4,
+          'debut_year': 2008,
         }
       ];
 
       const data = await fakeRequest(app)
-        .get('/animals')
+        .get('/kpop')
         .expect('Content-Type', /json/)
         .expect(200);
 
