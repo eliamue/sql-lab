@@ -31,14 +31,14 @@ describe('app routes', () => {
       return client.end(done);
     });
 
-    test('returns kpop', async() => {
+    test('GET kpop returns all kpop groups', async() => {
 
       const expectation = [
         {
           'id': 1,
           'name': 'BTS',
           'members': 7,
-          'gender': 'male',
+          'group_gender': 'male',
           'debut_year': 2013,
           'owner_id': 1,
         },
@@ -46,7 +46,7 @@ describe('app routes', () => {
           'id': 2,
           'name': 'Mamamoo',
           'members': 4,
-          'gender': 'female',
+          'group_gender': 'female',
           'debut_year': 2014,
           'owner_id': 1,
         },
@@ -54,7 +54,7 @@ describe('app routes', () => {
           'id': 3,
           'name': 'BlackPink',
           'members': 4,
-          'gender': 'female',
+          'group_gender': 'female',
           'debut_year': 2016,
           'owner_id': 1,
         },
@@ -62,7 +62,7 @@ describe('app routes', () => {
           'id': 4,
           'name': '(G)I-dle',
           'members': 6,
-          'gender': 'female',
+          'group_gender': 'female',
           'debut_year': 2018,
           'owner_id': 1,
         },
@@ -70,7 +70,7 @@ describe('app routes', () => {
           'id': 5,
           'name': 'SHINEE',
           'members': 4,
-          'gender': 'male',
+          'group_gender': 'male',
           'debut_year': 2008,
           'owner_id': 1,
         }
@@ -84,14 +84,14 @@ describe('app routes', () => {
       expect(data.body).toEqual(expectation);
     });
 
-    test('returns kpop/:id ', async() => {
+    test('GET kpop/1 returns a single kpop group', async() => {
 
       const expectation = 
         {
           'id': 1,
           'name': 'BTS',
           'members': 7,
-          'gender': 'male',
+          'group_gender': 'male',
           'debut_year': 2013,
           'owner_id': 1,
         };
@@ -103,5 +103,14 @@ describe('app routes', () => {
       expect(data.body).toEqual(expectation);
     });
 
+    test('/GET genders returns all genders', async() => {
+
+      const data = await fakeRequest(app)
+        .get('/genders')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body.length).toBeGreaterThan(0);
+    });
   });
 });
