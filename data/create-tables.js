@@ -16,16 +16,20 @@ async function run() {
                     id SERIAL PRIMARY KEY,
                     email VARCHAR(256) NOT NULL,
                     hash VARCHAR(512) NOT NULL
-                );           
+                );      
+                CREATE TABLE genders (
+                  id SERIAL PRIMARY KEY NOT NULL,
+                  group_gender VARCHAR(1024) NOT NULL
+                );     
                 CREATE TABLE kpop (
                     id SERIAL PRIMARY KEY NOT NULL,
                     name VARCHAR(512) NOT NULL,
                     members INTEGER NOT NULL,
-                    gender VARCHAR(512) NOT NULL,
+                    gender_id INTEGER NOT NULL REFERENCES genders(id),
                     debut_year INTEGER NOT NULL,
                     owner_id INTEGER NOT NULL REFERENCES users(id)
-            );
-        `);
+                );
+            `);
 
     console.log('create tables complete', getEmoji(), getEmoji(), getEmoji());
   }
