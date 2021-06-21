@@ -27,10 +27,10 @@ async function run() {
     await Promise.all(
       kpop.map(kpop => {
         return client.query(`
-                    INSERT INTO kpop (name, members, debut_year, owner_id)
-                    VALUES ($1, $2, $3, $4);
+                    INSERT INTO kpop (name, members, gender, debut_year, owner_id)
+                    VALUES ($1, $2, $3, $4, $5);
                 `,
-        [kpop.name, kpop.members, kpop.debut_year, user.id]);
+        [kpop.name, kpop.members, kpop.gender, kpop.debut_year, user.id]);
       })
     );
     

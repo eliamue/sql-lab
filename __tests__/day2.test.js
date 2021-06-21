@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const { execSync } = require('child_process');
+const { mainModule } = require('process');
 
 const fakeRequest = require('supertest');
 const app = require('../lib/app');
@@ -40,6 +41,7 @@ describe('post put and delete routes', () => {
         .send({
           name: 'new kpop group',
           members: 5,
+          gender: 'male',
           debut_year: 2015
         })
         .expect('Content-Type', /json/)
@@ -55,7 +57,8 @@ describe('post put and delete routes', () => {
         'members': 5,
         'debut_year': 2015, 
         'id': 6, 
-        'name': 'new kpop group', 
+        'name': 'new kpop group',
+        'gender': 'male', 
         'owner_id': 1,
       };
       
@@ -73,6 +76,7 @@ describe('post put and delete routes', () => {
         .send({
           name: 'new kpop group',
           members: 5,
+          gender: 'male',
           debut_year: 2015
         })
         .expect('Content-Type', /json/)
@@ -88,7 +92,8 @@ describe('post put and delete routes', () => {
         'members': 5,
         'debut_year': 2015, 
         'id': 6, 
-        'name': 'new kpop group', 
+        'name': 'new kpop group',
+        'gender': 'male', 
         'owner_id': 1,
       };
         
@@ -117,6 +122,7 @@ describe('post put and delete routes', () => {
         'debut_year': 2015, 
         'id': 6, 
         'name': 'new kpop group', 
+        'gender': 'male',
         'owner_id': 1,
       };
     
