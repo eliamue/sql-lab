@@ -74,7 +74,7 @@ describe('post put and delete routes', () => {
         'group_gender': 'male', 
         'owner_id': 1,
       };
-      
+      console.log(data.body);
       // check that the post request responds with the new kpop
       expect(data.body).toEqual(postedKpop);
       // check that the get request contians the new kpop
